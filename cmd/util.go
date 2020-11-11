@@ -18,3 +18,11 @@ func getGeneratedArray(length int) []int {
 	}
 	return arr
 }
+
+func getGeneratedNumber(maxValue int) int {
+	//The environment in which these programs are executed is deterministic, so rand.Intn will always return the same number.
+	source := rand.NewSource(time.Now().UnixNano()) //This helps generate random numbers
+	random := rand.New(source)
+
+	return random.Intn(maxValue)
+}
