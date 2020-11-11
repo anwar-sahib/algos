@@ -17,12 +17,12 @@ var moveY = [8]int{1, 2, 2, 1, -1, -2, -2, -1}
 var N = 8
 
 /*  Knight in middle of the chess board can have a maximum of 8 possible moves
-
-		6		7
-	4				8
-			K
-	4				1
-		3		2
+         x axis
+y  	_ |	6 |	_ |	7 | _
+a	4 |	_ |	_ |	_ | 8
+x	_ |	_ |	K | _ | _
+i	4 |	_ |	_ |	_ |	1
+s	_ | 3 | _ |	_ |	2
 
 
 If k is at position (x,y) then each move will have follwing co-ordinates
@@ -62,6 +62,7 @@ var knightTourCmd = &cobra.Command{
 	},
 }
 
+//There are N^2 Cells and for each, we have a maximum of 8 possible moves to choose from, so the worst running time is O(8^N^2).
 func kt(chess [8][8]int, x int, y int, moveN int) bool {
 	//All the squares are covered print the solution and return
 	if moveN == 64 {
