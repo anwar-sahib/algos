@@ -26,3 +26,17 @@ func getGeneratedNumber(maxValue int) int {
 
 	return random.Intn(maxValue)
 }
+
+func maxInt(x, y int) int {
+	if x < y {
+		return y
+	}
+	return x
+}
+
+func minInt(x, y int) int {
+	if x < y {
+		return x
+	}
+	return y
+}
