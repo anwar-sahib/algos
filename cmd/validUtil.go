@@ -20,3 +20,10 @@ func ensureBelow(number int, max int, name string) {
 		os.Exit(1)
 	}
 }
+
+func isOdd(number int) {
+	if number%2 == 0 {
+		fmt.Printf("%d should be odd\n", number)
+		os.Exit(1)
+	}
+}
