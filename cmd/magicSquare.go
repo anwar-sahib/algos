@@ -26,6 +26,9 @@ var magicSquareCmd = &cobra.Command{
 	Run: func(cmd *cobra.Command, args []string) {
 		isOdd(squareCells)
 		ensureBelow(squareCells, 100, "cells")
+		if showSteps {
+			tm.Clear() // Clear current screen to show steps properly
+		}
 		createMagicSquare()
 
 		if !showSteps {
@@ -132,7 +135,6 @@ func exceedingY(y int) bool {
 }
 
 func printSquare(flush bool) {
-	tm.Clear() // Clear current screen
 	tm.MoveCursor(1, 1)
 	for y := 0; y < squareCells; y++ {
 		for x := 0; x < squareCells; x++ {
