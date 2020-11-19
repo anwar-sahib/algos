@@ -2,7 +2,9 @@ package cmd
 
 import (
 	"fmt"
+	"time"
 
+	tm "github.com/buger/goterm"
 	"github.com/spf13/cobra"
 )
 
@@ -27,7 +29,7 @@ var magicSquareCmd = &cobra.Command{
 		createMagicSquare()
 
 		if !showSteps {
-			printSquare()
+			printSquare(false)
 		}
 	},
 }
@@ -46,7 +48,7 @@ func createMagicSquare() {
 			x, y = nextX, nextY
 
 			if showSteps {
-				printSquare()
+				printSquare(currentN != squareCells*squareCells)
 			}
 			continue
 		}
@@ -57,7 +59,7 @@ func createMagicSquare() {
 			x, y = nextX, nextY
 
 			if showSteps {
-				printSquare()
+				printSquare(currentN != squareCells*squareCells)
 			}
 			continue
 		}
@@ -68,7 +70,7 @@ func createMagicSquare() {
 			x, y = nextX, nextY
 
 			if showSteps {
-				printSquare()
+				printSquare(currentN != squareCells*squareCells)
 			}
 			continue
 		}
@@ -81,7 +83,7 @@ func createMagicSquare() {
 			x, y = nextX, nextY
 
 			if showSteps {
-				printSquare()
+				printSquare(currentN != squareCells*squareCells)
 			}
 			continue
 		}
@@ -94,7 +96,7 @@ func createMagicSquare() {
 			x, y = nextX, nextY
 
 			if showSteps {
-				printSquare()
+				printSquare(currentN != squareCells*squareCells)
 			}
 			continue
 		}
@@ -129,8 +131,9 @@ func exceedingY(y int) bool {
 	return false
 }
 
-func printSquare() {
-	fmt.Println()
+func printSquare(flush bool) {
+	tm.Clear() // Clear current screen
+	tm.MoveCursor(1, 1)
 	for y := 0; y < squareCells; y++ {
 		for x := 0; x < squareCells; x++ {
 			if square[x][y] < 10 {
@@ -143,4 +146,9 @@ func printSquare() {
 		}
 		fmt.Println()
 	}
+	if flush {
+		time.Sleep(time.Second)
+		tm.Flush() // Call it every time at the end of rendering except last call
+	}
+
 }
