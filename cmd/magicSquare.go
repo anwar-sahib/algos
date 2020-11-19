@@ -11,7 +11,7 @@ var square [100][100]int
 var showSteps bool
 
 func init() {
-	magicSquareCmd.PersistentFlags().IntVarP(&squareCells, "cells", "n", 1, "Number of cell in the magic square. (should be odd)")
+	magicSquareCmd.PersistentFlags().IntVarP(&squareCells, "no-rows", "n", 1, "Number of cell in a row in the magic square. (should be odd)")
 	magicSquareCmd.PersistentFlags().BoolVarP(&showSteps, "show-steps", "s", false, "Shows intermediate steps for the magic square")
 
 	rootCmd.AddCommand(magicSquareCmd)
